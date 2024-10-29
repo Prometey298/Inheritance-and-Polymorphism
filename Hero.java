@@ -1,4 +1,4 @@
-public abstract  class Hero {
+public abstract  class Hero implements Runnable {
     private String name;
 
     public Hero(String name) {
@@ -7,9 +7,10 @@ public abstract  class Hero {
     public String getName() {
         return name;
     }
-    public abstract  void attackEnemy(Enemy enemy) {
-        int damage = 5;
-        System.out.println(name + " атакует врага");
-        enemy.takeDamage(damage);
+    public abstract void attackEnemy(Enemy enemy);
+
+    @Override
+    public void  run() {
+
     }
 }

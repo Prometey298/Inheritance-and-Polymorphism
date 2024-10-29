@@ -1,4 +1,4 @@
-public class Enemy {
+public class Enemy implements Mortal {
     private int health;
     
     public Enemy(int health) {
@@ -12,8 +12,15 @@ public class Enemy {
     public void setHealth(int health) {
         this.health = health;
     }
-    public int takeDamage(int damage) {
+    public synchronized  void  takeDamage(int damage) {
         health -= damage;
-        return health;
+        if (health < 0) {
+            health = 0; // Здоровье не может быть отрицательным
+        }
+        System.out.println("Враг получил урон: " + damage + ". Осталось здоровья: " + health);
+    }
+    @Override
+    public boolean isAlive() {
+        return health > 0;
     }
 }
