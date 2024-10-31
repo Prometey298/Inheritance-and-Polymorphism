@@ -1,3 +1,4 @@
+// Класс Zombie наследуется от Enemy и представляет зомби с возможностью воскресения
 public class Zombie extends Enemy {
     private static final int INITIAL_HEALTH = 25;
 

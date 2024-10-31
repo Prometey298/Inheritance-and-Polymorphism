@@ -1,5 +1,5 @@
-public abstract  class Hero implements Runnable, Mortal {
-
+// Абстрактный класс Hero представляет героя, участвующего в бою
+public abstract class Hero implements Runnable, Mortal {
     protected String name;
     private int health;
 
@@ -16,23 +16,26 @@ public abstract  class Hero implements Runnable, Mortal {
         return health;
     }
 
+    // Абстрактный метод атаки врага, который будет реализован в каждом конкретном классе героя
     public abstract void attackEnemy(Enemy enemy);
 
     @Override
-    public void  run() {
+    public void run() {
     }
 
-    public synchronized  void  takeDamage(int damage) {
+    // Метод получения урона героем
+    public synchronized void takeDamage(int damage) {
         health -= damage;
         if (health < 0) {
-            health = 0; 
-        }        
+            health = 0;
+        }
         System.out.println(name + " получил урон: " + damage + ". Осталось здоровья: " + health);
-        if (health == 0) {                         
+        if (health == 0) {
             System.out.println(name + " погиб");
         }
     }
 
+    // Проверка, жив ли герой
     @Override
     public boolean isAlive() {
         return health > 0;
